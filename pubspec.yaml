@@ -1,0 +1,14 @@
+name: ckb_generate_hd
+description: generate CKB HD Wallet
+version: 1.0.0
+author: Bao Jun <baojun.cz@gmail.com>
+
+environment:
+  sdk: ">=2.2.0 <3.0.0"
+
+#dependencies:
+#  path: ^1.4.1
+
+dev_dependencies:
+  pedantic: ^1.0.0
+  test: ^1.0.0
