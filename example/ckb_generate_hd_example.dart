@@ -1,6 +1,10 @@
 import 'package:ckb_generate_hd/ckb_generate_hd.dart';
+import 'package:ckb_sdk/ckb-utils/network.dart';
 
-main() {
-  var awesome = Awesome();
-  print('awesome: ${awesome.isAwesome}');
+main() async {
+  final generation = CKBHDGeneration.createNew(Network.TestNet, "http://localhost:8114");
+  await generation.init();
+  final receive1 = generation.receiveByIndex(0);
+  print(generation.mnemonic);
+  print(receive1.toJson());
 }
