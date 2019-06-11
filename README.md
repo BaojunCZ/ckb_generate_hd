@@ -1,7 +1,4 @@
-A library for Dart developers.
-
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+Generate CKB HD Wallet
 
 ## Usage
 
@@ -9,14 +6,28 @@ A simple usage example:
 
 ```dart
 import 'package:ckb_generate_hd/ckb_generate_hd.dart';
+import 'package:ckb_sdk/ckb-utils/network.dart';
 
-main() {
-  var awesome = new Awesome();
+main() async {
+  final generation = CKBHDGeneration.createNew(Network.TestNet, "http://localhost:8114");
+  await generation.init();
+  final receive = generation.receiveByIndex(0);
+  print(generation.mnemonic);
+  print(receive.toJson());
 }
 ```
 
-## Features and bugs
+## HDIndexWallet
 
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: http://example.com/issues/replaceme
+```dart
+Map<String, dynamic> toJson() => <String, dynamic>{
+        'privateKey': hex.encode(privateKey),
+        'publicKey': hex.encode(publicKey),
+        'type': isReceive ? 'Receive' : 'Change',
+        'index': index,
+        'path': path,
+        'lockHash': lockHash,
+        'address': getAddress(Constant.netWork),
+        'blake160': blake160
+      };
+```

@@ -4,7 +4,7 @@ import 'package:ckb_sdk/ckb-utils/network.dart';
 main() async {
   final generation = CKBHDGeneration.createNew(Network.TestNet, "http://localhost:8114");
   await generation.init();
-  final receive1 = generation.receiveByIndex(0);
+  final receive = generation.receiveByIndex(0);
   print(generation.mnemonic);
-  print(receive1.toJson());
+  print(receive.toJson());
 }

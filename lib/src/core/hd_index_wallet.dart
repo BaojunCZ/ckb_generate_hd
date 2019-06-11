@@ -53,6 +53,7 @@ class HDIndexWallet {
         'publicKey': hex.encode(publicKey),
         'type': isReceive ? 'Receive' : 'Change',
         'index': index,
+        'path': path,
         'lockHash': lockHash,
         'address': getAddress(Constant.netWork),
         'blake160': blake160
